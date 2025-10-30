@@ -4,7 +4,9 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "npm-run-all --parallel dev:vite ws:dev",
+		"dev:vite": "vite dev",
+		"ws:dev": "tsx src/lib/server/index.ts",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -24,15 +26,20 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.12.4",
 		"globals": "^16.4.0",
+		"npm-run-all": "^4.1.5",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"svelte": "^5.39.5",
 		"svelte-check": "^4.3.2",
+		"tsx": "^4.20.6",
 		"typescript": "^5.9.2",
 		"typescript-eslint": "^8.44.1",
 		"vite": "^7.1.7"
 	},
 	"dependencies": {
-		"fuse.js": "^7.1.0"
+		"@aws-sdk/client-transcribe-streaming": "^3.919.0",
+		"@types/ws": "^8.18.1",
+		"fuse.js": "^7.1.0",
+		"ws": "^8.18.3"
 	}
 }
