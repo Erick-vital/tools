@@ -87,7 +87,7 @@
 				</div>
 				<div class="sub-section">
 					<h3>Respuesta Explicada</h3>
-					<p>{item.explained}</p>
+					<p>{@html item.explained.replace(/\n/g, '<br>')}</p>
 				</div>
 				<div class="sub-section">
 					<h3>Caso de Uso</h3>

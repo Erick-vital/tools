@@ -1,28 +1,40 @@
 export const data = [
 	{
-		title: '¿Qué es CORS (Cross-Origin Resource Sharing)?',
-		short: 'Es un mecanismo de seguridad que permite a un servidor indicar a los navegadores qué orígenes (dominios) están autorizados a solicitar sus recursos.',
+		title: 'What is CORS (Cross-Origin Resource Sharing)?',
+		short: 'It is a security mechanism that allows a server to indicate to browsers which origins (domains) are authorized to request its resources.',
 		explained:
-			'Por defecto, los navegadores aplican la "Same-Origin Policy" (Política del Mismo Origen), que impide que una página web solicite recursos a un dominio diferente al que la sirvió. CORS introduce cabeceras HTTP (como `Access-Control-Allow-Origin`) que el servidor puede usar para "relajar" esta política de forma controlada, permitiendo peticiones seguras entre diferentes dominios.',
+			'By default, browsers apply the "Same-Origin Policy", which prevents a web page from requesting resources from a different domain than the one that served it. CORS introduces HTTP headers (like `Access-Control-Allow-Origin`) that the server can use to "relax" this policy in a controlled way, allowing secure requests between different domains.',
 		useCase:
-			'Una aplicación frontend (React, Svelte, etc.) en `https://mi-app.com` necesita obtener datos de un API backend en `https://api.mi-empresa.com`. Sin CORS, el navegador bloquearía la petición. El servidor de la API debe configurarse para enviar la cabecera `Access-Control-Allow-Origin: https://mi-app.com` para permitir la comunicación.'
+			'A frontend application (React, Svelte, etc.) at `https://my-app.com` needs to get data from a backend API at `https://api.my-company.com`. Without CORS, the browser would block the request. The API server must be configured to send the `Access-Control-Allow-Origin: https://my-app.com` header to allow communication.'
 	},
 	{
-		title: '¿Qué es un JWT (JSON Web Token)?',
+		title: 'What is a JWT (JSON Web Token)?',
 		short:
-			'Es un estándar abierto (RFC 7519) para crear tokens de acceso que permiten la propagación de identidad y privilegios de forma segura y compacta entre partes.',
+			'It is an open standard (RFC 7519) for creating access tokens that allow the propagation of identity and privileges securely and compactly between parties.',
 		explained:
-			'Un JWT consta de tres partes separadas por puntos: Header (algoritmo y tipo), Payload (datos del usuario, permisos, etc.) y Signature (firma para verificar la autenticicad). El servidor genera el token, lo firma con una clave secreta y se lo envía al cliente. El cliente lo almacena y lo envía en cada petición posterior. El servidor puede verificar la firma sin necesidad de consultar una base de datos, lo que lo hace muy eficiente.',
+			'A JWT consists of three parts separated by dots: Header (algorithm and type), Payload (user data, permissions, etc.), and Signature (to verify authenticity). The server generates the token, signs it with a secret key, and sends it to the client. The client stores it and sends it in each subsequent request. The server can verify the signature without needing to query a database, which makes it very efficient.',
 		useCase:
-			'Un usuario inicia sesión con su email y contraseña. El servidor valida las credenciales, genera un JWT con el ID de usuario y un rol de "usuario_registrado", y se lo devuelve. El cliente guarda el JWT y lo añade a la cabecera `Authorization` de todas las peticiones a rutas protegidas. El servidor verifica el JWT en cada petición para autorizar el acceso.'
+			'A user logs in with their email and password. The server validates the credentials, generates a JWT with the user ID and a "registered_user" role, and returns it. The client saves the JWT and adds it to the `Authorization` header of all requests to protected routes. The server verifies the JWT on each request to authorize access.'
 	},
 	{
-		title: '¿Qué es una API RESTful?',
+		title: 'What is a RESTful API?',
 		short:
-			'Es un estilo de arquitectura para diseñar aplicaciones en red. Se basa en un conjunto de principios que utilizan los métodos estándar de HTTP (GET, POST, PUT, DELETE) para operar sobre recursos.',
+			'It is an architectural style for designing networked applications. It is based on a set of principles that use standard HTTP methods (GET, POST, PUT, DELETE) to operate on resources.',
 		explained:
-			'REST (Representational State Transfer) no es un protocolo, sino un conjunto de restricciones. Las principales son: arquitectura cliente-servidor, comunicación sin estado (stateless), cacheabilidad, y una interfaz uniforme. Los recursos (ej: usuarios, productos) se identifican con URIs (ej: `/users/123`). Las interacciones son sin estado, lo que significa que cada petición del cliente debe contener toda la información necesaria para ser procesada.',
+			'REST (Representational State Transfer) is not a protocol, but a set of constraints. The main ones are: client-server architecture, stateless communication, cacheability, and a uniform interface. Resources (e.g., users, products) are identified with URIs (e.g., `/users/123`). Interactions are stateless, meaning that each client request must contain all the information necessary to be processed.',
 		useCase:
-			'Una aplicación de e-commerce expone una API RESTful. Para obtener la lista de productos, el frontend hace una petición `GET /products`. Para añadir un nuevo producto al carrito, hace `POST /cart/items` con los datos del producto en el cuerpo. Para eliminar un producto, `DELETE /cart/items/456`. La API es clara, predecible y sigue los estándares de la web.'
-	}
+			'An e-commerce application exposes a RESTful API. To get the list of products, the frontend makes a `GET /products` request. To add a new product to the cart, it makes a `POST /cart/items` with the product data in the body. To delete a product, `DELETE /cart/items/456`. The API is clear, predictable, and follows web standards.'
+	},
+	{
+		title: 'SOLID Principles',
+		short:
+			'The SOLID principles are principles that apply to Object-Oriented Programming (OOP) and software design.',
+		explained:
+			`S - Single Responsibility Principle: A class should have one, and only one, reason to change.
+L - Open/Closed Principle: Software entities (classes, modules, functions) should be open for extension, but closed for modification.
+I - Interface Segregation Principle: No client should be forced to depend on interfaces it does not use. It is better to have many small, specific interfaces than one large, monolithic one.
+D - Dependency Inversion Principle: High-level modules should not depend on low-level modules. Both should depend on abstractions.`,
+		useCase:
+			'When designing an order processing class, instead of having a single monolithic class that validates, processes payment, and notifies the user, SOLID principles are applied. An `OrderValidator` class is created for validation, a `PaymentProcessor` for payments, and a `NotificationService` for notifications. The main `OrderProcessor` class coordinates these smaller classes (Dependency Inversion), each with a single responsibility and able to be extended or replaced without modifying the others.'
+	},
 ];
